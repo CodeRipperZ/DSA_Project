@@ -4,45 +4,37 @@
 //package myclass;//change the package name
 
 
+import java.util.Scanner;
+import java.io.PrintWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
+import java.io.FileNotFoundException;
+
 
 
 
 public class HouseFile 
 {
-		
-	public File file;
-	boolean bool = false;	// this is not required - by Hashan
+	
+	
 
-	// constructor wil not do any good, remove this - by Hashan
-	//Class Constructor to create text file
-	public HouseFile() throws IOException
-	{
 	
-		 this.file = new File("housefile.txt");// create new text files
-	}
-	
-	// make this method static, we don't need any instance of 'HomeFile' class
-	// this will not return anything, will throw 'Exception', not 'IOException' - by Hashan
-	public boolean saveHouseDataFile(Object data) throws IOException
+	public static void saveHouseDataFile(Object[] data) 
 	{
-		FileOutputStream tfileOut;//create fileoutputstream
 		
+		File file = new File("housefile.txt");// create new text files
 		
 		try 
 		{
-	       
-    		tfileOut = new FileOutputStream(file.getAbsolutePath(),true);
-			 ObjectOutputStream tobjout = new ObjectOutputStream(tfileOut);
-			 tobjout.writeObject(data);
-			 tobjout.writeObject("\n");
-			 tobjout.close();
-			 tfileOut.close();
-		
+			
+			PrintWriter printWriter = new PrintWriter(new FileOutputStream(file.getAbsolutePath(), true));
+            		int oblength = data.length;    
+            		int i;  
+            		for(i = 0; i < oblength; i++) {  
+            	
+                		printWriter.println(data[i]);  
+            		}   
+            		printWriter.close();    
  
 	        
 			
@@ -53,14 +45,12 @@ public class HouseFile
 			ex.printStackTrace();
 			
 		}
-		catch(IOException ex)
-		{
-			
-			ex.printStackTrace();
-		}
-		return false;
+		
+		
 		
 		}
+
+	
 	
 	
 	
