@@ -49,13 +49,13 @@ public class HouseFile
 		catch (IOException ex) 
 		{
 			
-			ex.printStackTrace();
+			throw ex;
 			
 		}
 		catch(Exception e)
 		{
 			
-			e.printStackTrace();
+			throw e;
 		}
 		
 		
