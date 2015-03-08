@@ -16,8 +16,9 @@ public class HouseFile
 {
 		
 	public File file;
-	boolean bool = false;
+	boolean bool = false;	// this is not required - by Hashan
 
+	// constructor wil not do any good, remove this - by Hashan
 	//Class Constructor to create text file
 	public HouseFile() throws IOException
 	{
@@ -25,7 +26,8 @@ public class HouseFile
 		 this.file = new File("housefile.txt");// create new text files
 	}
 	
-
+	// make this method static, we don't need any instance of 'HomeFile' class
+	// this will not return anything, will throw 'Exception', not 'IOException' - by Hashan
 	public boolean saveHouseDataFile(Object data) throws IOException
 	{
 		FileOutputStream tfileOut;//create fileoutputstream
