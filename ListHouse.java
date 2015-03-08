@@ -110,7 +110,7 @@ class ListHouse implements Listable<ListHouse>
 	}
 	
 	//Implements the copy method in Listable interface
-		//This Method will copy data from a object one to another	
+	//This Method will copy data from a object one to another	
 	public void copy(ListHouse o)
 	{
 		this.LotNumber = o.LotNumber;
