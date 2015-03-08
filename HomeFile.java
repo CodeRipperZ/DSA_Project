@@ -19,7 +19,7 @@ public class HouseFile
 	
 
 	
-	public static void saveHouseDataFile(ListHouse[] data) 
+	public static void saveHouseDataFile(ListHouse[] data) throws Exception
 	{
 		
 		File file = new File("housefile.re");// create new text files
