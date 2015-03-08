@@ -15,7 +15,7 @@ class ListHouse implements Listable<ListHouse>
 
 	
 	
-    //Get Method for LotNumber
+    	//Get Method for LotNumber
 	public long getLotnumber() 
 	{
 		return LotNumber;
