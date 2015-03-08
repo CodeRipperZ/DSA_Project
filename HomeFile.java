@@ -31,10 +31,16 @@ public class HouseFile
             		int oblength = data.length;    
             		int i; 
             		printWriter.println(oblength);
-            		for(i = 0; i < oblength; i++) {  
-            	
-                		printWriter.println(data[i]);  
-            		}   
+            		for(ListHouse obj : data) 
+            		{
+				printWriter.println(obj.getLotNumber);
+				printWriter.println(obj.getLotNumber);
+				printWriter.println(obj.getLotNumber);
+				printWriter.println(obj.getLotNumber);
+				printWriter.println(obj.getLotNumber);
+				printWriter.println(obj.getLotNumber);
+			}
+
             		printWriter.close();    
  
 	        
