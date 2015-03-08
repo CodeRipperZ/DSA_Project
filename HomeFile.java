@@ -15,18 +15,18 @@ import java.io.FileNotFoundException;
 
 public class HouseFile 
 {
-	
+	private static final String TEXTFILENAME = "housefile.re";	
 	
 
 	
 	public static void saveHouseDataFile(ListHouse[] data) throws Exception
 	{
 		
-		File file = new File("housefile.re");// create new text files
+		
 		
 		try 
 		{
-			
+			File file = new File("housefile.re");// create new text files
 			PrintWriter printWriter = new PrintWriter(file);
             		int oblength = data.length;    
             	
@@ -46,11 +46,16 @@ public class HouseFile
 	        
 			
 		} 
-		catch (FileNotFoundException ex) 
+		catch (IOException ex) 
 		{
 			
 			ex.printStackTrace();
 			
+		}
+		catch(IOException e)
+		{
+			
+			e.printStackTrace();
 		}
 		
 		
