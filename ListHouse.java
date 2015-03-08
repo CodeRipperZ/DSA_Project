@@ -9,7 +9,7 @@ class ListHouse implements Listable<ListHouse>
 	private long LotNumber =0;
 	private String FirstName="NULL";
 	private String LastName="NULL";
-	private double Price=0;
+	private double Price=0.0;
 	private float SquareFeet=0.0f;
 	private int NumberOfBedrooms=0;
 
@@ -91,7 +91,7 @@ class ListHouse implements Listable<ListHouse>
 	
 	
 	
-	/*This Method will compare mostly the LotNumbers of two objects
+	/*
 	 * compareTo Method conditions
 	 * If the Integer is equal to the argument then 0 is returned.
 	 * If the Integer is less than the argument then -1 is returned.
@@ -110,7 +110,7 @@ class ListHouse implements Listable<ListHouse>
 	}
 	
 	//Implements the copy method in Listable interface
-	//This Method will copy data from a object one to object two	
+		//This Method will copy data from a object one to another	
 	public void copy(ListHouse o)
 	{
 		this.LotNumber = o.LotNumber;
