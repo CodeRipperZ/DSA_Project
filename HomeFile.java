@@ -52,7 +52,7 @@ public class HouseFile
 			ex.printStackTrace();
 			
 		}
-		catch(IOException e)
+		catch(Exception e)
 		{
 			
 			e.printStackTrace();
