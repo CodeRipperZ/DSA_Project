@@ -19,15 +19,15 @@ public class HouseFile
 	
 
 	
-	public static void saveHouseDataFile(Object[] data) 
+	public static void saveHouseDataFile(ListHouse[] data) 
 	{
 		
-		File file = new File("housefile.txt");// create new text files
+		File file = new File("housefile.re");// create new text files
 		
 		try 
 		{
 			
-			PrintWriter printWriter = new PrintWriter(new FileOutputStream(file.getAbsolutePath(), true));
+			PrintWriter printWriter = new PrintWriter(file);
             		int oblength = data.length;    
             		int i;  
             		for(i = 0; i < oblength; i++) {  
