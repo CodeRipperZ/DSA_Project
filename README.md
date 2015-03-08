@@ -25,6 +25,6 @@ NOTE: Obviously, clicking 'Clear' button will clear all text fields, program wil
 
 # TEXT FILE FORMAT
 
-0-8 bytes - number of ListHouse objects saved in the file
+first 4 bytes - number of ListHouse objects saved in the file
 
 after 8 bytes - line by line data of 'ListHouse' object members
