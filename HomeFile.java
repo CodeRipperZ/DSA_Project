@@ -29,7 +29,7 @@ public class HouseFile
 			
 			PrintWriter printWriter = new PrintWriter(file);
             		int oblength = data.length;    
-            		int i; 
+            	
             		printWriter.println(oblength);
             		for(ListHouse obj : data) 
             		{
