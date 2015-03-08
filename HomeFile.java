@@ -26,7 +26,7 @@ public class HouseFile
 		
 		try 
 		{
-			File file = new File("housefile.re");// create new text files
+			File file = new File(TEXTFILENAME);// create new text files
 			PrintWriter printWriter = new PrintWriter(file);
             		int oblength = data.length;    
             	
