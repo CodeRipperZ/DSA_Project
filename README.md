@@ -25,6 +25,10 @@ NOTE: Obviously, clicking 'Clear' button will clear all text fields, program wil
 
 # TEXT FILE FORMAT
 
+file extension - .re
+
 first 4 bytes - number of ListHouse objects saved in the file
 
 after 8 bytes - line by line data of 'ListHouse' object members
+
+there is an example file in the repository
