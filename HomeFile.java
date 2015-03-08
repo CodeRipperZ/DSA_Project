@@ -29,7 +29,8 @@ public class HouseFile
 			
 			PrintWriter printWriter = new PrintWriter(file);
             		int oblength = data.length;    
-            		int i;  
+            		int i; 
+            		printWriter.println(oblength);
             		for(i = 0; i < oblength; i++) {  
             	
                 		printWriter.println(data[i]);  
