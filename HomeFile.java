@@ -33,12 +33,12 @@ public class HouseFile
             		printWriter.println(oblength);
             		for(ListHouse obj : data) 
             		{
-				printWriter.println(obj.getLotNumber);
-				printWriter.println(obj.getLotNumber);
-				printWriter.println(obj.getLotNumber);
-				printWriter.println(obj.getLotNumber);
-				printWriter.println(obj.getLotNumber);
-				printWriter.println(obj.getLotNumber);
+				printWriter.println(obj.getLotnumber);
+				printWriter.println(obj.getFirstName);
+				printWriter.println(obj.getLastName);
+				printWriter.println(obj.getPrice);
+				printWriter.println(obj.getSquareFeet);
+				printWriter.println(obj.getNumberOfBedrooms);
 			}
 
             		printWriter.close();    
