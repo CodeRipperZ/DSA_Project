@@ -11,7 +11,7 @@ class ListHouse implements Listable<ListHouse>
 	private String LastName="NULL";
 	private double Price=0;
 	private float SquareFeet=0.0f;
-	private int NumberOfBedrooms=0
+	private int NumberOfBedrooms=0;
 
 	
 	
