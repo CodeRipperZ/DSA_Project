@@ -1,69 +1,40 @@
 /*
  * HouseFile Created by W.S.N.Perera
- */
-//package myclass;//change the package name
+*/
 
-
-import java.util.Scanner;
-import java.io.PrintWriter;
+import java.util.Scanner;		// for read from a file object
+import java.io.PrintWriter;		// for write to a file object
 import java.io.File;
-
-
-
-
 
 public class HouseFile 
 {
-	private static final String TEXTFILENAME = "housefile.re";	
+	// file name of the file that we are going save to and load from
+	private static final String FILE_NAME = "RealEstate.re";
 	
-
-	
-	public static void saveHouseDataFile(ListHouse[] data) throws Exception
-	{
-		
-		
-		
-		try 
-		{
-			File file = new File(TEXTFILENAME);// create new text files
-			PrintWriter printWriter = new PrintWriter(file);
-            		int oblength = data.length;    
-            	
-            		printWriter.println(oblength);
-            		for(ListHouse obj : data) 
-            		{
-				printWriter.println(obj.getLotnumber);
-				printWriter.println(obj.getFirstName);
-				printWriter.println(obj.getLastName);
-				printWriter.println(obj.getPrice);
-				printWriter.println(obj.getSquareFeet);
-				printWriter.println(obj.getNumberOfBedrooms);
+	// takes an array of 'ListHouse' objects and write to a .re file
+	public static void saveHouseData(ListHouse[] data) throws Exception {
+		try {
+			File fileObj = new File(FILE_NAME);
+			PrintWriter pw = new PrintWriter(fileObj);
+			// number of 'ListHouse' objects that we are going to write
+			int nObj = data.length;
+			// number of 'ListHouse' objects saved in the file is written at the beginning of .re file
+			pw.println(nObj);
+			// travese through the array and writes each field into a .re file
+			for(ListHouse obj : data) {
+				pw.println(obj.getLotNumber());
+				pw.println(obj.getFirstName());
+				pw.println(obj.getLastName());
+				pw.println(obj.getPrice());
+				pw.println(obj.getSquareFeet());
+				pw.println(obj.getNoOfBedrooms());
 			}
-
-            		printWriter.close();    
- 
-	        
-			
-		} 
-		catch (IOException ex) 
-		{
-			
+			pw.close();
+		}
+		catch(IOException io_ex) {
+			throw io_ex;
+		}
+		catch(Exception ex) {
 			throw ex;
-			
 		}
-		catch(Exception e)
-		{
-			
-			throw e;
-		}
-		
-		
-		
-		}
-
-	
-	
-	
-	
-
 }
