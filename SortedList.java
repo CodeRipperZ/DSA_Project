@@ -78,4 +78,22 @@ class SortedList {
 	public int size() {
 		return listSize;
 	}
+	
+	// sorts elements in the list and return an array of 'ListHouse' objects in sorted order
+	public ListHouse[] sort() {
+		ListHouse[] houseArray = this.printList();
+		boolean swapped = false;
+		for(int i = 0; i < houseArray.length; i++) {
+			swapped = false;
+			for(int j = 0; j < houseArray.length - 1; j++) {
+				if(houseArray[j].compareTo(houseArray[j+1]) == 1) {
+					ListHouse obj = houseArray[j+1];
+					houseArray[j + 1] = houseArray[j];
+					houseArray[j] = obj;
+					swapped = true;
+				}
+			}
+		}
+		return houseArray;
+	}
 }
