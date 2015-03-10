@@ -23,7 +23,7 @@ class SortedList {
 		houseList = new ListHouse[array_size];
 	}
 	
-	// double the array once current size = array size(i.e. when the list is full)
+	// double the array once current size = array size - 1(i.e. as soon as user filled the second last element
 	private void doDouble() {
 		if(listSize == ARRAY_SIZE - 1) {
 			ARRAY_SIZE *= 2;
