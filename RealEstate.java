@@ -439,7 +439,7 @@ class RealEstateFind extends JFrame {
 		panCenter.add(scrollTable, BorderLayout.CENTER);
 		
 		// south container
-		panStatus.setLayout(new GridLayout(1, 2, 10, 0));
+		panStatus.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 0));
 		panStatus.add(chkSort);
 		panStatus.add(cmbOrder);
 		
