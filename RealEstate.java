@@ -346,6 +346,9 @@ class RealEstateFind extends JFrame {
 	private JScrollPane scrollTable = new JScrollPane();
 	private JLabel lblTable = new JLabel();
 	
+	// combo box to select sorting order, ascending or descending
+	private JComboBox<String> cmbOrder = new JComboBox<String>();
+	
 	// html for displaying list elements in a tabular fashion
 	private final String htmlTable = "<html><table border=\"1\"><tr><th>LotNumber</th><th>Name</th><th>Price</th><th>Area</th><th>Rooms</th></tr>%s</table></html>";
 	
@@ -353,14 +356,33 @@ class RealEstateFind extends JFrame {
 	private void initControls() {
 		btnClear.setEnabled(false);
 		lbl1.setHorizontalAlignment(JLabel.RIGHT);
+		
+		// combo box
+		cmbOrder.addItem("Ascending Order");
+		cmbOrder.addItem("Descending Order");
+		
+		cmbOrder.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent evt) {
+				if(chkSort.isSelected() == true) {
+					if(cmbOrder.getSelectedIndex() == 0)
+						addDataTable(houseList.sort(SortedList.ORDER_ASCENDING));
+					if(cmbOrder.getSelectedIndex() == 1)
+						addDataTable(houseList.sort(SortedList.ORDER_DESCENDING));
+				}
+			}
+		});
 
 		// checkbox
 		chkSort.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent evt) {
-				JCheckBox src = (JCheckBox)evt.getSource();
-				if(src.isSelected() == true)
-					addDataTable(houseList.sort());
-				else
+			public void itemStateChanged(ItemEvent evt) {
+				int state = evt.getStateChange();
+				if(state == ItemEvent.SELECTED) {
+					if(cmbOrder.getSelectedIndex() == 0)
+						addDataTable(houseList.sort(SortedList.ORDER_ASCENDING));
+					if(cmbOrder.getSelectedIndex() == 1)
+						addDataTable(houseList.sort(SortedList.ORDER_DESCENDING));
+				}
+				if(state == ItemEvent.DESELECTED)
 					addDataTable(physicalArray);
 			}
 		});
@@ -391,6 +413,7 @@ class RealEstateFind extends JFrame {
 				txtQuery.setText(null);
 				addDataTable(physicalArray);
 				btnClear.setEnabled(false);
+				chkSort.setSelected(false);
 				txtQuery.requestFocus();
 			}
 		});
@@ -418,6 +441,7 @@ class RealEstateFind extends JFrame {
 		// south container
 		panStatus.setLayout(new GridLayout(1, 2, 10, 0));
 		panStatus.add(chkSort);
+		panStatus.add(cmbOrder);
 		
 		// add to the frame
 		add(panNorth, BorderLayout.NORTH);
