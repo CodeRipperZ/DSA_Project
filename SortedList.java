@@ -5,6 +5,9 @@
 */
 
 class SortedList {
+	public static final int ORDER_ASCENDING = 0;
+	public static final int ORDER_DESCENDING = 1;
+	
 	// initial size of the list
 	private int ARRAY_SIZE = 0;
 	
@@ -80,18 +83,28 @@ class SortedList {
 	}
 	
 	// sorts elements in the list and return an array of 'ListHouse' objects in sorted order
-	public ListHouse[] sort() {
+	public ListHouse[] sort(int order) {
 		ListHouse[] houseArray = this.printList();
 		boolean swapped = false;
 		for(int i = 0; i < houseArray.length; i++) {
 			swapped = false;
-			for(int j = 0; j < houseArray.length - 1; j++) {
-				if(houseArray[j].compareTo(houseArray[j+1]) == 1) {
-					ListHouse obj = houseArray[j+1];
+			switch(order) {
+				case ORDER_ASCENDING:
+					if(houseArray[j].compareTo(houseArray[j+1]) == -1) {
+						ListHouse obj = houseArray[j+1];
 					houseArray[j + 1] = houseArray[j];
-					houseArray[j] = obj;
+						houseArray[j] = obj;
+						swapped = true;
+					}
+					break;
+				case ORDER_DESCENDING:
+					if(houseArray[j].compareTo(houseArray[j+1]) == 1) {
+						ListHouse obj = houseArray[j+1];
+						houseArray[j + 1] = houseArray[j];
+						houseArray[j] = obj;
 					swapped = true;
-				}
+					}
+					break;
 			}
 		}
 		return houseArray;
