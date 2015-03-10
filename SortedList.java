@@ -25,7 +25,7 @@ class SortedList {
 	
 	// double the array once current size = array size(i.e. when the list is full)
 	private void doDouble() {
-		if(listSize == ARRAY_SIZE) {
+		if(listSize == ARRAY_SIZE - 1) {
 			ARRAY_SIZE *= 2;
 			ListHouse[] temp = new ListHouse[ARRAY_SIZE];
 			for(int i = 0; i < listSize; i++)
