@@ -78,8 +78,11 @@ class RealEstateFind extends JFrame {
 						addDataTable(physicalArray[findIdx]);
 						btnClear.setEnabled(true);
 					}
-					else
+					else {
 						JOptionPane.showMessageDialog(null, "Not found", "Find", JOptionPane.INFORMATION_MESSAGE);
+						txtQuery.setText(null);
+						txtQuery.requestFocus();
+					}
 				}
 				catch(NumberFormatException ex) {
 					JOptionPane.showMessageDialog(null, "Invalid data or empty query", "Find", JOptionPane.WARNING_MESSAGE);
