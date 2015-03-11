@@ -9,7 +9,7 @@ import javax.swing.border.*;
 class RealEstateFind extends JFrame {
 	// we need 'SortedList' object from the main program to be passed to this JFrame as an argument
 	private SortedList houseList = null;
-	/* this array will  keep 'ListHouse' objects as they exist in the list, so this will ease to many method calls in
+	/* this array will  keep 'ListHouse' objects as they exist in the list, so this will ease too many method calls in
 	 * this frame to 'printList()'
 	*/
 	private ListHouse[] physicalArray = null;
