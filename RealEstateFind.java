@@ -74,7 +74,7 @@ class RealEstateFind extends JFrame {
 					ListHouse obj = new ListHouse();
 					obj.setLotNumber(Long.parseLong(txtQuery.getText()));
 					int findIdx = houseList.find(obj);
-					if(findIdx != -1) {
+					if(findIdx >= 0) {
 						addDataTable(physicalArray[findIdx]);
 						btnClear.setEnabled(true);
 					}
