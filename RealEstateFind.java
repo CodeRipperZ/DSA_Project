@@ -5,8 +5,13 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 
+// This class creates a window, which facilitates searching through the list
 class RealEstateFind extends JFrame {
+	// we need 'SortedList' object from the main program to be passed to this JFrame as an argument
 	private SortedList houseList = null;
+	/* this array will  keep 'ListHouse' objects as they exist in the list, so this will ease to many method calls in
+	 * this frame to 'printList()'
+	*/
 	private ListHouse[] physicalArray = null;
 	
 	private Container panNorth = new Container();
@@ -18,14 +23,18 @@ class RealEstateFind extends JFrame {
 	private JButton btnFind = new JButton("Find");
 	private JButton btnClear = new JButton("Clear");
 	
+	// we use a check box to trigger sort
 	private JCheckBox chkSort = new JCheckBox("sort by lot number");
 	private JScrollPane scrollTable = new JScrollPane();
 	private JLabel lblTable = new JLabel();
-
+	
+	// combo box to select sorting order, ascending or descending
 	private JComboBox<String> cmbOrder = new JComboBox<String>();
 	
+	// html for displaying list elements in a tabular fashion
 	private final String htmlTable = "<html><table border=\"1\"><tr><th>LotNumber</th><th>Name</th><th>Price</th><th>Area</th><th>Rooms</th></tr>%s</table></html>";
 	
+	// inialize JFrame controls
 	private void initControls() {
 		btnClear.setEnabled(false);
 		lbl1.setHorizontalAlignment(JLabel.RIGHT);
@@ -46,7 +55,7 @@ class RealEstateFind extends JFrame {
 		});
 
 		// checkbox
-		chkSort.addItemListener(new ItemListener() {
+		chkSort.addActionListener(new ActionListener() {
 			public void itemStateChanged(ItemEvent evt) {
 				int state = evt.getStateChange();
 				if(state == ItemEvent.SELECTED) {
@@ -67,7 +76,7 @@ class RealEstateFind extends JFrame {
 					ListHouse obj = new ListHouse();
 					obj.setLotNumber(Long.parseLong(txtQuery.getText()));
 					int findIdx = houseList.find(obj);
-					if(findIdx >= 0) {
+					if(findIdx != -1) {
 						addDataTable(physicalArray[findIdx]);
 						btnClear.setEnabled(true);
 					}
@@ -138,6 +147,7 @@ class RealEstateFind extends JFrame {
 		setVisible(true);
 	}
 	
+	// add an array of 'ListHouse' objects to the html table
 	private void addDataTable(ListHouse[] array) {
 		String str = "";
 		lblTable.setText(htmlTable);
@@ -153,6 +163,7 @@ class RealEstateFind extends JFrame {
 		lblTable.setText(String.format(lblTable.getText(), str));
 	}
 	
+	// add one 'ListHouse' object to the html table
 	private void addDataTable(ListHouse obj) {
 		String str = "";
 		lblTable.setText(htmlTable);
