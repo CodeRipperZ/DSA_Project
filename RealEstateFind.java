@@ -53,7 +53,7 @@ class RealEstateFind extends JFrame {
 		});
 
 		// checkbox
-		chkSort.addActionListener(new ActionListener() {
+		chkSort.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent evt) {
 				int state = evt.getStateChange();
 				if(state == ItemEvent.SELECTED) {
