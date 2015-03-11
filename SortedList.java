@@ -88,23 +88,25 @@ class SortedList {
 		boolean swapped = false;
 		for(int i = 0; i < houseArray.length; i++) {
 			swapped = false;
-			switch(order) {
-				case ORDER_ASCENDING:
-					if(houseArray[j].compareTo(houseArray[j+1]) == -1) {
-						ListHouse obj = houseArray[j+1];
-					houseArray[j + 1] = houseArray[j];
-						houseArray[j] = obj;
-						swapped = true;
-					}
-					break;
-				case ORDER_DESCENDING:
-					if(houseArray[j].compareTo(houseArray[j+1]) == 1) {
-						ListHouse obj = houseArray[j+1];
-						houseArray[j + 1] = houseArray[j];
-						houseArray[j] = obj;
-					swapped = true;
-					}
-					break;
+			for(int j = 0; j < houseArray.length - 1; j++) {
+				switch(order) {
+					case ORDER_ASCENDING:
+						if(houseArray[j].compareTo(houseArray[j+1]) == -1) {
+							ListHouse obj = houseArray[j+1];
+							houseArray[j + 1] = houseArray[j];
+							houseArray[j] = obj;
+							swapped = true;
+						}
+						break;
+					case ORDER_DESCENDING:
+						if(houseArray[j].compareTo(houseArray[j+1]) == 1) {
+							ListHouse obj = houseArray[j+1];
+							houseArray[j + 1] = houseArray[j];
+							houseArray[j] = obj;
+							swapped = true;
+						}
+						break;
+				}
 			}
 		}
 		return houseArray;
