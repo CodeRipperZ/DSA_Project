@@ -9,6 +9,7 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 import javax.swing.border.*;
+import java.util.regex.*;
 
 public class RealEstate extends JFrame implements ActionListener {
 	/* All the controls in the JFrame are added to its 'ContentPane', which is layed
@@ -177,19 +178,28 @@ public class RealEstate extends JFrame implements ActionListener {
 	}
 	
 	// collects user entered data from textfields and returns a ListHouse object, so it can be easily add to the sorted list
-	private ListHouse getItem() {
+	private ListHouse getItem() throws Exception {
 		ListHouse temp = new ListHouse();
-		try {
-			temp.setLotNumber(Long.parseLong(txtLotNo.getText()));
-			temp.setFirstName(txtFName.getText());
-			temp.setLastName(txtLName.getText());
-			temp.setPrice(Double.parseDouble(txtPrice.getText()));
-			temp.setSquareFeet(Float.parseFloat(txtSqrF.getText()));
-			temp.setNoOfBedrooms(Integer.parseInt(txtBedNo.getText()));
-		}
-		catch(Exception e) {
-			JOptionPane.showMessageDialog(this, e.getMessage());
-		}
+		String lotNo = txtLotNo.getText();
+		String fName = txtFName.getText();
+		String lName = txtLName.getText();
+		String price = txtPrice.getText();
+		String sqrFt = txtSqrF.getText();
+		String rooms = txtBedNo.getText();
+		
+		Validator.validateLotNumber(lotNo);
+		temp.setLotNumber(Long.parseLong(lotNo));
+		Validator.validateFirstName(fName);
+		temp.setFirstName(fName);
+		Validator.validateLastName(lName);
+		temp.setLastName(lName);
+		Validator.validatePrice(price);
+		temp.setPrice(Double.parseDouble(price));
+		Validator.validateArea(sqrFt);
+		temp.setSquareFeet(Float.parseFloat(sqrFt));
+		Validator.validateRooms(rooms);
+		temp.setNoOfBedrooms(Integer.parseInt(rooms));
+		
 		return temp;
 	}
 	
@@ -261,13 +271,20 @@ public class RealEstate extends JFrame implements ActionListener {
 				break;
 			// user clicks 'OK' button, program will collect data, and make a ListHouse object and put it into the list
 			case "OK":
-				reList.insert(getItem());
-				displayItem(reList.findKth(listPointer = 0));
-				writeLog("New data added");
-				switchEditMode(false);
-				btnAdd.setText("Add");
-				btnRemove.setText("Remove");
-				btnReset.setText("Reset");
+				// adding a 'ListHouse' object to the list through validating data fields
+				try {
+					reList.insert(getItem());
+					displayItem(reList.findKth(listPointer = 0));
+					writeLog("New data added");
+					switchEditMode(false);
+					btnAdd.setText("Add");
+					btnRemove.setText("Remove");
+					btnReset.setText("Reset");
+				}
+				catch(Exception ex) {
+					JOptionPane.showMessageDialog(this, ex.getMessage(), "Add", JOptionPane.WARNING_MESSAGE);
+					txtLotNo.requestFocus();
+				}
 				break;
 			// user clicks 'Cancel' button, user cancel adding new house data, program switch back to normal mode
 			case "Cancel":
