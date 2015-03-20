@@ -31,10 +31,7 @@ public class HouseFile
 			}
 			pw.close();
 		}
-		catch(IOException io_ex) {	// well, change of plans, we do no need this catch block, so REMOVE IT :)
-			throw io_ex;
-		}
-		catch(Exception ex) { // leave this as is
+		catch(Exception ex) {
 			throw ex;
 		}
 	}
@@ -67,10 +64,7 @@ public class HouseFile
 		 	return ListHouse;
 		    }
 		readCodes.close(); // out of the block, ERROR!!!
-    		catch(IOException io_ex) { // remove this catch block
-    			throw io_ex;
-    		}
-    		catch(Exception ex) { // leave this as is
+    		catch(Exception ex) {
     			throw ex;
     		}
 
