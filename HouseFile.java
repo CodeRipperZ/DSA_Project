@@ -38,7 +38,7 @@ public class HouseFile
 }
 // first put this code block under the class definition, this is way out from the class's right brace :D
 // put this block inside above brace
-		static String[] ListHouse = new String[99];	// not nessesary
+		static String[] ListHouse = new String[99];	// not nessesary, why an array of strings? :o
    		static int i = 0;				// not nessasary either
 		private static Scanner readCodes;		// not even this, create this inside the method
 		// so remove above statements
