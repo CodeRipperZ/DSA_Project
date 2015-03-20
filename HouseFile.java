@@ -31,33 +31,46 @@ public class HouseFile
 			}
 			pw.close();
 		}
-		catch(IOException io_ex) {
+		catch(IOException io_ex) {	// well, change of plans, we do no need this catch block, so REMOVE IT :)
 			throw io_ex;
 		}
-		catch(Exception ex) {
+		catch(Exception ex) { // leave this as is
 			throw ex;
 		}
 	}
 }
-
-		static String[] ListHouse = new String[99];
-   		static int i = 0;
-		private static Scanner readCodes;
-        
+// first put this code block under the class definition, this is way out from the class's right brace :D
+// put this block inside above brace
+		static String[] ListHouse = new String[99];	// not nessesary
+   		static int i = 0;				// not nessasary either
+		private static Scanner readCodes;		// not even this, create this inside the method
+		// so remove above statements
+        	
+        	// change method name to 'loadHouseData' ;)
+        	// method should return an array of 'ListHouse' objects, check the definition
         	public static String readHouseData() throws Exception {
     		try {
-    			readCodes = new Scanner(new File(FILE_NAME));
+    			// just do as follows
+    			// declare a new file object, use 'FILE_NAME' in the constructor for absolute path
+    			// declare a scanner object, use the file object declared above in the constructor
+    			// declare an array of 'ListHouse' objects, but DO NOT INSTANTIATE!!!
+    			// read the first line in the file(which is no. of objects saved in that particular file), assign it to an integer variable
+    			// now INSTATIATE 'ListHouse' array, use no. of objects as its length
+    			// implement a loop to read through the file, and fill the array with its data
+    			
+    			readCodes = new Scanner(new File(FILE_NAME)); // create the scanner object inside the method
+    			// all the lines below is terribly wrong
     			while(readCodes.hasNext()) {
             		ListHouse[i] = readCodes.nextLine();
             		i++;
     			}
 		 	return ListHouse;
 		    }
-		readCodes.close();
-    		catch(IOException io_ex) {
+		readCodes.close(); // out of the block, ERROR!!!
+    		catch(IOException io_ex) { // remove this catch block
     			throw io_ex;
     		}
-    		catch(Exception ex) {
+    		catch(Exception ex) { // leave this as is
     			throw ex;
     		}
 
