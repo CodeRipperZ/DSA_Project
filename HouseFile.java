@@ -39,3 +39,27 @@ public class HouseFile
 		}
 	}
 }
+
+static String[] ListHouse = new String[99];
+   		static int i = 0;
+        private static Scanner readCodes;
+        
+        public static String readHouseData() throws Exception {
+    		try {
+    			readCodes = new Scanner(new File(FILE_NAME));
+    			while(readCodes.hasNext()) {
+            		ListHouse[i] = readCodes.nextLine();
+            		i++;
+    			}
+		 	return ListHouse;
+		    }
+		readCodes.close();
+    		catch(IOException io_ex) {
+    			throw io_ex;
+    		}
+    		catch(Exception ex) {
+    			throw ex;
+    		}
+
+    		
+	}
