@@ -36,44 +36,29 @@ public class HouseFile
 		}
 	}
 	
-	/* loadHouseData created by A.S Dewpura */
-	
-	
-	public static ListHouse[] loadHouseData () throws Exception
+	public static ListHouse[] loadHouseData () throws Exception {
 		try {
 			File readfile = new File(FILE_NAME);
 			Scanner readCodes = new Scanner(readfile);
-			
 			//read number of 'ListHouse' objects saved in the file
 			int numobj = readCodes.nextInt();
-			
 			ListHouse [] houseObjs = new ListHouse [numobj];
 			
 			//run the loop according to the ListHouse object
 			for (int i=0; i<numobj; i++){
-			
 				houseObjs[i].setLotNumber(readCodes.nextLong());
 				houseObjs[i].setFirstName(readCodes.next());
 				houseObjs[i].setLastName(readCodes.next());
 				houseObjs[i].setPrice(readCodes.nextDouble());
 				houseObjs[i].setSquareFeet(readCodes.nextFloat());
-				houseObjs[i].setNoOfBedrooms(readCodes.nextInt())
-				
-							
+				houseObjs[i].setNoOfBedrooms(readCodes.nextInt());
 			}
-			
 			return houseObjs;
-			
 			readCodes.close();
 		}
-			
-
 		catch(Exception ex) {
 			throw ex;
 		}
-
-	}		
-		
-
+	}
 }
 
