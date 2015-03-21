@@ -36,7 +36,7 @@ public class HouseFile
 		}
 	}
 	
-	// check the return type
+	// we don't need an argument to load from a file
 	public static ListHouse[] loadHouseData (ListHouse[] data) throws Exception
 		try {
 			File readfile = new File(FILE_NAME);
@@ -45,10 +45,14 @@ public class HouseFile
 			
 			int numobj = readCodes.nextInt();
 			
-			ListHouse [] Listhouse = new ListHouse [numobj];
+			ListHouse [] Listhouse = new ListHouse [numobj];// correct this to 'ListHouse[] houseObjs'
 			
 			for (int i=0; i<numobj; i++){
-				for(ListHouse object : data){
+				for(ListHouse object : data){ // this for loop is useless
+				// you can access the members of the class by '.' operator
+				// so, for example,
+				// 	Listhouse[i].setLotNumber(readCodes.nextLong());
+				// just correct them and that's it
 				Listhouse[i] = readCodes.nextLong(object.setLotNumber());
 				Listhouse[i] = readCodes.next(object.setFirstName());
 				Listhouse[i] = readCodes.next(object.setLastName());
