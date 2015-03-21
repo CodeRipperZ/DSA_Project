@@ -35,38 +35,31 @@ public class HouseFile
 			throw ex;
 		}
 	}
-}
-// first put this code block under the class definition, this is way out from the class's right brace :D
-// put this block inside above brace
-		static String[] ListHouse = new String[99];	// not nessesary, why an array of strings? :o
-   		static int i = 0;				// not nessasary either
-		private static Scanner readCodes;		// not even this, create this inside the method
-		// so remove above statements
-        	
-        	// change method name to 'loadHouseData' ;)
-        	// method should return an array of 'ListHouse' objects, check the definition
-        	public static String readHouseData() throws Exception {
-    		try {
-    			// just do as follows
-    			// declare a new file object, use 'FILE_NAME' in the constructor for absolute path
-    			// declare a scanner object, use the file object declared above in the constructor
-    			// declare an array of 'ListHouse' objects, but DO NOT INSTANTIATE!!!
-    			// read the first line in the file(which is no. of objects saved in that particular file), assign it to an integer variable
-    			// now INSTATIATE 'ListHouse' array, use no. of objects as its length
-    			// implement a loop to read through the file, and fill the array with its data
-    			
-    			readCodes = new Scanner(new File(FILE_NAME)); // create the scanner object inside the method
-    			// all the lines below is terribly wrong
-    			while(readCodes.hasNext()) {
-            		ListHouse[i] = readCodes.nextLine();
-            		i++;
-    			}
-		 	return ListHouse;
-		    }
-		readCodes.close(); // out of the block, ERROR!!!
-    		catch(Exception ex) {
-    			throw ex;
-    		}
+	
+	public static String loadHouseData (ListHouse[] data) throws Exception {
+		try {
+			File readfile = new File(FILE_NAME)
+			Scanner readCodes = new Scanner(readfile);	
+			ListHouse [] Listhouse = new ListHouse [];
+			int numobj = readCodes.nextInt();
+			ListHouse[numobj];
+			
+			for (int i=0; I<numobj; i++){
+				Listhouse[i] = readCodes.nextLine();
+			}
+			
+			return Listhouse;
+			
+			readCodes.close();
+		}
+			
 
-    		
-	}
+		catch(Exception ex) {
+			throw ex;
+		}
+
+	}		
+		
+
+}
+
