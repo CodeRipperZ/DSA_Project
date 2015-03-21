@@ -36,16 +36,17 @@ public class HouseFile
 		}
 	}
 	
+	/* loadHouseData created by A.S Dewpura */
+	
 	// we don't need an argument to load from a file
-	public static ListHouse[] loadHouseData (ListHouse[] data) throws Exception
+	public static ListHouse[] loadHouseData () throws Exception
 		try {
 			File readfile = new File(FILE_NAME);
 			Scanner readCodes = new Scanner(readfile);
-			// i said 'DO NOT INSTANTIATE'
 			
 			int numobj = readCodes.nextInt();
 			
-			ListHouse [] houseObjs = new ListHouse [numobj];// correct this to 'ListHouse[] houseObjs'
+			ListHouse [] houseObjs = new ListHouse [numobj];
 			
 			for (int i=0; i<numobj; i++){
 			
