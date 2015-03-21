@@ -46,7 +46,7 @@ public class HouseFile
 			int numobj = readCodes.nextInt();
 			ListHouse[numobj]; // ERROR, instantiation is wrong, recheck
 			
-			for (int i=0; i<numobj; i++){ // ERROR, its 'i' not 'I' in the for loop
+			for (int i=0; i<numobj; i++){
 				// check the 'ListHouse' class done by chethaka
 				// check the 'example.re' file to see how file structure is organized
 				// read appropriate values from the file and assign it to each objects using setter mehtods
