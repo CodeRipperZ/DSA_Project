@@ -11,6 +11,10 @@ class SortedList {
 	// initial size of the list
 	private int ARRAY_SIZE = 0;
 	
+	// this variable is used to save the initial list size invoked through the constructor
+	// this is used to revert back the list to its initial size
+	private int initial_size = 0;
+	
 	// list implementation using an array
 	private ListHouse[] houseList = null;
 	
@@ -20,6 +24,7 @@ class SortedList {
 	// constructor
 	public SortedList(int array_size) {
 		this.ARRAY_SIZE = array_size;
+		this.initial_size = array_size;
 		houseList = new ListHouse[array_size];
 	}
 	
@@ -28,8 +33,10 @@ class SortedList {
 		if(listSize == ARRAY_SIZE - 1) {
 			ARRAY_SIZE *= 2;
 			ListHouse[] temp = new ListHouse[ARRAY_SIZE];
-			for(int i = 0; i < listSize; i++)
-				temp[i].copy(houseList[i]);				
+			for(int i = 0; i < listSize; i++) {
+				temp[i] = new ListHouse();
+				temp[i].copy(houseList[i]);
+			}
 			houseList = temp;
 		}
 	}
@@ -75,6 +82,9 @@ class SortedList {
 		for(int i = 0; i < listSize; i++)
 			houseList[i] = null;
 		listSize = 0;
+		// revert the list back to its inital size, so the memmory can be saved
+		ARRAY_SIZE = initial_size;
+		houseList = new ListHouse[initial_size];
 	}
 	
 	// returns the number of elelments currently in the list
