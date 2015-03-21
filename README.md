@@ -23,7 +23,7 @@ NOTE: if you don't want to commit your data to the list, click 'Cancel', program
 NOTE: Obviously, clicking 'Clear' button will clear all text fields, program will NOT switch back to normal mode, you can still fill your data.
 
 
-# TEXT FILE FORMAT
+# .RE FILE FORMAT
 
 file extension - .re
 
@@ -32,3 +32,11 @@ first 4 bytes - number of ListHouse objects saved in the file
 after 8 bytes - line by line data of 'ListHouse' object members
 
 there is an example file in the repository
+
+# Using Exapmle RealEstate.re file for testing
+
+1. Create a project using yout IDE(Netbeans, Exlipse, JCreator etc)
+2. Import source files to the project
+3. Copy RealEstate.re to your project directory
+4. Run Program
+5. Click 'Load'
