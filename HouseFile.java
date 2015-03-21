@@ -39,14 +39,14 @@ public class HouseFile
 	// check the return type
 	public static String loadHouseData (ListHouse[] data) throws Exception {
 		try {
-			File readfile = new File(FILE_NAME) // ; missing
+			File readfile = new File(FILE_NAME);
 			Scanner readCodes = new Scanner(readfile);
 			// i said 'DO NOT INSTANTIATE'
 			ListHouse [] Listhouse = new ListHouse []; // ERROR, just the declartion of 'ListHouse' array is needed
 			int numobj = readCodes.nextInt();
 			ListHouse[numobj]; // ERROR, instantiation is wrong, recheck
 			
-			for (int i=0; I<numobj; i++){ // ERROR, its 'i' not 'I' in the for loop
+			for (int i=0; i<numobj; i++){ // ERROR, its 'i' not 'I' in the for loop
 				// check the 'ListHouse' class done by chethaka
 				// check the 'example.re' file to see how file structure is organized
 				// read appropriate values from the file and assign it to each objects using setter mehtods
