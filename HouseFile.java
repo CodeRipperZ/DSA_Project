@@ -45,25 +45,21 @@ public class HouseFile
 			
 			int numobj = readCodes.nextInt();
 			
-			ListHouse [] Listhouse = new ListHouse [numobj];// correct this to 'ListHouse[] houseObjs'
+			ListHouse [] houseObjs = new ListHouse [numobj];// correct this to 'ListHouse[] houseObjs'
 			
 			for (int i=0; i<numobj; i++){
-				for(ListHouse object : data){ // this for loop is useless
-				// you can access the members of the class by '.' operator
-				// so, for example,
-				// 	Listhouse[i].setLotNumber(readCodes.nextLong());
-				// just correct them and that's it
-				Listhouse[i] = readCodes.nextLong(object.setLotNumber());
-				Listhouse[i] = readCodes.next(object.setFirstName());
-				Listhouse[i] = readCodes.next(object.setLastName());
-				Listhouse[i] = readCodes.nextDouble(object.setPrice(price));
-				Listhouse[i] = readCodes.nextFloat(object.setSquareFeet());
-				Listhouse[i] = readCodes.nextInt(object.setNoOfBedrooms());
+			
+				houseObjs[i].setLotNumber(readCodes.nextLong());
+				houseObjs[i].setFirstName(readCodes.next());
+				houseObjs[i].setLastName(readCodes.next());
+				houseObjs[i].setPrice(readCodes.nextDouble());
+				houseObjs[i].setSquareFeet(readCodes.nextFloat());
+				houseObjs[i].setNoOfBedrooms(readCodes.nextInt())
 				
-				}			
+							
 			}
 			
-			return Listhouse;
+			return houseObjs;
 			
 			readCodes.close();
 		}
