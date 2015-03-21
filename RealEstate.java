@@ -9,7 +9,6 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 import javax.swing.border.*;
-import java.util.regex.*;
 
 public class RealEstate extends JFrame implements ActionListener {
 	/* All the controls in the JFrame are added to its 'ContentPane', which is layed
@@ -142,7 +141,8 @@ public class RealEstate extends JFrame implements ActionListener {
 	
 	// initializes listPointer & reList to used in the program
 	private void initData() {
-		reList = new SortedList(10);
+		// for the first time, program creates a List of 'ListHouse' objects of lenght 3
+		reList = new SortedList(3);
 		switchEditMode(false);
 	}
 	
@@ -330,7 +330,15 @@ public class RealEstate extends JFrame implements ActionListener {
 				break;
 			// user clicks 'Load' button, previously written data will be loaded to the program and will put them back to the list as 'ListHouse' objects
 			case "Load":
-				// suhani's part
+				try {
+					ListHouse[] fData = HouseFile.loadHouseData();
+					for(ListHouse obj : fData) {
+						reList.insert(obj);
+					}
+					displayItem(reList.findKth(listPointer = 0));
+					checkPointer();
+					writeLog("All data loaded");
+				} catch(Exception ex) { JOptionPane.showMessageDialog(this, ex.getMessage());}
 				break;
 			// user clicks 'Find' button, a window will be displayed for finding list elements
 			case "Find":
