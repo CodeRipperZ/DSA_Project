@@ -1,5 +1,7 @@
 /*
- * HouseFile Created by W.S.N.Perera
+ * HouseFile Created by W.S.N.Perera & A.S Dewpura
+ *
+ * with CodeRipperZ
 */
 
 import java.util.Scanner;		// for read from a file object
@@ -38,24 +40,24 @@ public class HouseFile
 	
 	public static ListHouse[] loadHouseData () throws Exception {
 		try {
-			File readfile = new File(FILE_NAME);
-			Scanner readCodes = new Scanner(readfile);
-			//read number of 'ListHouse' objects saved in the file
-			int numobj = readCodes.nextInt();
-			ListHouse [] houseObjs = new ListHouse [numobj];
+			File fileObj = new File(FILE_NAME);
+			Scanner fRead = new Scanner(fileObj);
+			// read number of 'ListHouse' objects saved in the file
+			int nObj = fRead.nextInt();
+			ListHouse[] temp = new ListHouse[nObj];
 			
-			//run the loop according to the ListHouse object
-			for (int i=0; i<numobj; i++){
-				// ERROR, real instantiation missing, add that here
-				houseObjs[i].setLotNumber(readCodes.nextLong());
-				houseObjs[i].setFirstName(readCodes.next());
-				houseObjs[i].setLastName(readCodes.next());
-				houseObjs[i].setPrice(readCodes.nextDouble());
-				houseObjs[i].setSquareFeet(readCodes.nextFloat());
-				houseObjs[i].setNoOfBedrooms(readCodes.nextInt());
+			// run the loop according to the ListHouse object
+			for(int i = 0; i < nObj; i++) {
+				temp[i] = new ListHouse();
+				temp[i].setLotNumber(fRead.nextLong());
+				temp[i].setFirstName(fRead.next());
+				temp[i].setLastName(fRead.next());
+				temp[i].setPrice(fRead.nextDouble());
+				temp[i].setSquareFeet(fRead.nextFloat());
+				temp[i].setNoOfBedrooms(fRead.nextInt());
 			}
-			return houseObjs;
-			readCodes.close();
+			fRead.close();
+			return temp;
 		}
 		catch(Exception ex) {
 			throw ex;
