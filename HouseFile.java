@@ -37,20 +37,26 @@ public class HouseFile
 	}
 	
 	// check the return type
-	public static String loadHouseData (ListHouse[] data) throws Exception {
+	public static ListHouse[] loadHouseData (ListHouse[] data) throws Exception
 		try {
 			File readfile = new File(FILE_NAME);
 			Scanner readCodes = new Scanner(readfile);
 			// i said 'DO NOT INSTANTIATE'
-			ListHouse [] Listhouse = new ListHouse []; // ERROR, just the declartion of 'ListHouse' array is needed
+			
 			int numobj = readCodes.nextInt();
-			ListHouse[numobj]; // ERROR, instantiation is wrong, recheck
+			
+			ListHouse [] Listhouse = new ListHouse [numobj];
 			
 			for (int i=0; i<numobj; i++){
-				// check the 'ListHouse' class done by chethaka
-				// check the 'example.re' file to see how file structure is organized
-				// read appropriate values from the file and assign it to each objects using setter mehtods
-				Listhouse[i] = readCodes.nextLine(); 
+				for(ListHouse object : data){
+				Listhouse[i] = readCodes.nextLong(object.setLotNumber());
+				Listhouse[i] = readCodes.next(object.setFirstName());
+				Listhouse[i] = readCodes.next(object.setLastName());
+				Listhouse[i] = readCodes.nextDouble(object.setPrice(price));
+				Listhouse[i] = readCodes.nextFloat(object.setSquareFeet());
+				Listhouse[i] = readCodes.nextInt(object.setNoOfBedrooms());
+				
+				}			
 			}
 			
 			return Listhouse;
