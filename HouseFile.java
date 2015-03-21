@@ -38,16 +38,18 @@ public class HouseFile
 	
 	/* loadHouseData created by A.S Dewpura */
 	
-	// we don't need an argument to load from a file
+	
 	public static ListHouse[] loadHouseData () throws Exception
 		try {
 			File readfile = new File(FILE_NAME);
 			Scanner readCodes = new Scanner(readfile);
 			
+			//read number of 'ListHouse' objects saved in the file
 			int numobj = readCodes.nextInt();
 			
 			ListHouse [] houseObjs = new ListHouse [numobj];
 			
+			//run the loop according to the ListHouse object
 			for (int i=0; i<numobj; i++){
 			
 				houseObjs[i].setLotNumber(readCodes.nextLong());
