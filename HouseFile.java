@@ -46,6 +46,7 @@ public class HouseFile
 			
 			//run the loop according to the ListHouse object
 			for (int i=0; i<numobj; i++){
+				// ERROR, real instantiation missing, add that here
 				houseObjs[i].setLotNumber(readCodes.nextLong());
 				houseObjs[i].setFirstName(readCodes.next());
 				houseObjs[i].setLastName(readCodes.next());
