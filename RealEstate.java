@@ -55,7 +55,7 @@ public class RealEstate extends JFrame implements ActionListener {
 	private JTextField txtSqrF = new JTextField();
 	private JTextField txtBedNo = new JTextField();
 	
-	private int list_cursor = 0;								// to navigate through the list
+	private int list_cursor = 0;					// to navigate through the list
 	private final SortedList CORE_LIST = new SortedList(3);		// List ADT to store 'ListHouse' objects
 	
 	// initializes controls on the frame
