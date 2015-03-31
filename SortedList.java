@@ -8,32 +8,32 @@ class SortedList {
 	public static final int ORDER_ASCENDING = 0;
 	public static final int ORDER_DESCENDING = 1;
 	
-	// initial size of the list
-	private int ARRAY_SIZE = 0;
+	// size of the array for list impementation using arrays
+	private int array_size = 0;
 	
 	// this variable is used to save the initial list size invoked through the constructor
 	// this is used to revert back the list to its initial size
-	private int initial_size = 0;
+	private int original_size = 0;
+	
+	// current size of the list
+	private int list_size = 0;
 	
 	// list implementation using an array
 	private ListHouse[] houseList = null;
 	
-	// current size of the list
-	private int listSize = 0;
-	
 	// constructor
 	public SortedList(int array_size) {
-		this.ARRAY_SIZE = array_size;
-		this.initial_size = array_size;
+		this.array_size = array_size;
+		this.original_size = array_size;
 		houseList = new ListHouse[array_size];
 	}
 	
-	// double the array once current size = array size - 1(i.e. as soon as user filled the second last element
+	// double the array once current size = array size(i.e. when the list is full)
 	private void doDouble() {
-		if(listSize == ARRAY_SIZE - 1) {
-			ARRAY_SIZE *= 2;
-			ListHouse[] temp = new ListHouse[ARRAY_SIZE];
-			for(int i = 0; i < listSize; i++) {
+		if(list_size == array_size - 1) {
+			array_size *= 2;
+			ListHouse[] temp = new ListHouse[array_size];
+			for(int i = 0; i < list_size; i++) {
 				temp[i] = new ListHouse();
 				temp[i].copy(houseList[i]);
 			}
@@ -44,33 +44,42 @@ class SortedList {
 	// inserts an element to the list
 	public void insert(ListHouse o) {
 		doDouble();
-		houseList[listSize++] = o;
+		houseList[list_size++] = o;
 	}
 	
 	// not yet implemented
-	public void remove() {
-		houseList[listSize].copy(new ListHouse());
+	public void remove(int pos) {
+		if(pos == list_size - 1)
+			houseList[pos] = null;
+		else {
+			for(int i = pos; i < list_size - 1; i++) {
+				houseList[i] = new ListHouse();
+				houseList[i].copy(houseList[i + 1]);
+				houseList[i + 1] = null;
+			}
+		}
+		list_size--;
 	}
 	
 	// finds the first occurance of the list passed as an argument, returns index position if found, else returns -1
 	public int find(ListHouse o) {
-		for(int i = 0;  i < listSize; i++)
+		for(int i = 0;  i < list_size; i++)
 			if(houseList[i].compareTo(o) == 0)
 				return i;
 		return -1;
 	}
 	
-	// returns an element specified in the position
+	// returns an element specified in the position, if not found, null returned
 	public ListHouse findKth(int pos) {
-		if(pos >= 0 && pos <= listSize)
+		if(pos >= 0 && pos <= list_size)
 				return houseList[pos];
 		return null;
 	}
 	
 	// return an array of elements in the list
 	public ListHouse[] printList() {
-		ListHouse[] tempList = new ListHouse[listSize];
-		for(int i = 0; i < listSize; i++) {
+		ListHouse[] tempList = new ListHouse[list_size];
+		for(int i = 0; i < list_size; i++) {
 			tempList[i] = new ListHouse();
 			tempList[i].copy(houseList[i]);
 		}
@@ -79,20 +88,32 @@ class SortedList {
 	
 	// will make the list empty
 	public void makeEmpty() {
-		for(int i = 0; i < listSize; i++)
+		for(int i = 0; i < list_size; i++)
 			houseList[i] = null;
-		listSize = 0;
+
+		list_size = 0;
 		// revert the list back to its inital size, so the memmory can be saved
-		ARRAY_SIZE = initial_size;
-		houseList = new ListHouse[initial_size];
+		array_size = original_size;
+		houseList = new ListHouse[original_size];
+	}
+	
+	public ListHouse next(int pos) {
+		if(pos >= 0 && pos < list_size)
+			return houseList[pos + 1];
+		return null;
+	}
+	
+	public ListHouse previous(int pos) {
+		if(pos > 0 && pos <= list_size)
+			return houseList[pos - 1];
+		return null;
 	}
 	
 	// returns the number of elelments currently in the list
-	public int size() {
-		return listSize;
+	public int getSize() {
+		return list_size;
 	}
 	
-	// sorts elements in the list and return an array of 'ListHouse' objects in sorted order
 	public ListHouse[] sort(int order) {
 		ListHouse[] houseArray = this.printList();
 		boolean swapped = false;
