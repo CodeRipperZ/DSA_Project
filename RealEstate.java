@@ -7,7 +7,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import java.util.*;
 import javax.swing.border.*;
 
 public class RealEstate extends JFrame implements ActionListener {
@@ -56,8 +55,8 @@ public class RealEstate extends JFrame implements ActionListener {
 	private JTextField txtSqrF = new JTextField();
 	private JTextField txtBedNo = new JTextField();
 	
-	private int listPointer = 0;			// to navigate through the list
-	private SortedList reList = null;		// List ADT to store 'ListHouse' objects
+	private int list_cursor = 0;								// to navigate through the list
+	private final SortedList CORE_LIST = new SortedList(3);		// List ADT to store 'ListHouse' objects
 	
 	// initializes controls on the frame
 	private void initFrame() {
@@ -138,18 +137,10 @@ public class RealEstate extends JFrame implements ActionListener {
 		add(panOperations);
 		add(panLog);
 	}
-	
-	// initializes listPointer & reList to used in the program
-	private void initData() {
-		// for the first time, program creates a List of 'ListHouse' objects of lenght 3
-		reList = new SortedList(3);
-		switchEditMode(false);
-	}
-	
+
 	// constructor constructs the JFrame
 	public RealEstate() {
 		initFrame();						// initialize frame contents
-		initData();						// initialize data
 		getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));	// set frame layout
 		setTitle("Real Estate Program");	// set frame title
 		setSize(300, 420);					// set frame size
@@ -157,6 +148,8 @@ public class RealEstate extends JFrame implements ActionListener {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);									// set default exit behaviour
 		setLocationRelativeTo(null);													// set frame location
 		setVisible(true);					// display frame
+		
+		switchEditMode(false);
 	}
 	
 	public static void main (String[] args) {
@@ -172,9 +165,18 @@ public class RealEstate extends JFrame implements ActionListener {
 	
 	// ### helpers
 	// checks the listpointer whether to disable navigation buttons or not
-	private void checkPointer() {
-		btnPrev.setEnabled((reList.findKth(listPointer - 1) == null) ? false : true);
-		btnNext.setEnabled((reList.findKth(listPointer + 1) == null) ? false : true);
+	private void checkCursor() {
+		int list_size = CORE_LIST.getSize();
+		btnPrev.setEnabled((CORE_LIST.previous(list_cursor) == null) ? false : true);
+		btnNext.setEnabled((CORE_LIST.next(list_cursor) == null) ? false : true);
+		btnRemove.setEnabled((list_size > 0 ? true : false));
+		btnFind.setEnabled((list_size > 0 ? true : false));
+		btnReset.setEnabled((list_size > 0 ? true : false));
+		
+		if(list_size == 0) {
+			lblLog.setText("Ready");
+			lblItem.setText("Empty List");
+		}
 	}
 	
 	// collects user entered data from textfields and returns a ListHouse object, so it can be easily add to the sorted list
@@ -213,6 +215,8 @@ public class RealEstate extends JFrame implements ActionListener {
 			txtSqrF.setText(String.format("%.2f", obj.getSquareFeet()));
 			txtBedNo.setText(String.format("%d", obj.getNoOfBedrooms()));
 		}
+		else
+			clearTextFields();
 	}
 	
 	// ### Event Handling
@@ -255,9 +259,10 @@ public class RealEstate extends JFrame implements ActionListener {
 	// the big event handling code for all the operations handled by the program
 	public void actionPerformed(ActionEvent e) {
 		JButton src = (JButton)e.getSource();
-		switch(src.getText()) {
+		String msg = src.getText().toUpperCase();
+		switch(msg) {
 			// user clicks 'Add' button, program switch to edit mode, so the user can edit data
-			case "Add":
+			case "ADD":
 				clearTextFields();
 				writeLog("Adding new data");
 				switchEditMode(true);
@@ -266,15 +271,22 @@ public class RealEstate extends JFrame implements ActionListener {
 				btnReset.setText("Clear");
 				break;
 			// user clicks 'Remove' button, the selected item in the normal mode will be removed
-			// not yet done <<<<<
-			case "Remove":
+			case "REMOVE":
+				CORE_LIST.remove(list_cursor);
+				if(CORE_LIST.getSize() == 0)
+					displayItem(null);
+				else
+					displayItem((CORE_LIST.previous(list_cursor) == null ? CORE_LIST.findKth(list_cursor) : CORE_LIST.previous(list_cursor--)));
+				writeLog("1 item removed");
+				checkCursor();
 				break;
 			// user clicks 'OK' button, program will collect data, and make a ListHouse object and put it into the list
 			case "OK":
-				// adding a 'ListHouse' object to the list through validating data fields
 				try {
-					reList.insert(getItem());
-					displayItem(reList.findKth(listPointer = 0));
+					CORE_LIST.insert(getItem());
+					list_cursor = CORE_LIST.getSize() - 1;
+					displayItem(CORE_LIST.findKth(list_cursor));
+					//displayItem(CORE_LIST.findKth(list_cursor = 0));
 					writeLog("New data added");
 					switchEditMode(false);
 					btnAdd.setText("Add");
@@ -287,9 +299,9 @@ public class RealEstate extends JFrame implements ActionListener {
 				}
 				break;
 			// user clicks 'Cancel' button, user cancel adding new house data, program switch back to normal mode
-			case "Cancel":
+			case "CANCEL":
 				clearTextFields();
-				displayItem(reList.findKth(listPointer));
+				displayItem(CORE_LIST.findKth(list_cursor));
 				writeLog("Adding cancelled");
 				switchEditMode(false);
 				btnAdd.setText("Add");
@@ -297,52 +309,53 @@ public class RealEstate extends JFrame implements ActionListener {
 				btnReset.setText("Reset");
 				break;
 			// user clicks 'Clear' button, all text fields will be cleared, program WILL NOT switch back to normal mode
-			case "Clear":
+			case "CLEAR":
 				clearTextFields();
 				writeLog("Text-fields cleared");
 				break;
 			// user clicks 'Reset' button, all the elements in the list will be deleted.
-			case "Reset":
-				reList.makeEmpty();
+			case "RESET":
+				CORE_LIST.makeEmpty();
 				clearTextFields();
-				listPointer = 0;
-				checkPointer();
-				writeLog("All items removed");
+				list_cursor = 0;
+				checkCursor();
 				break;
-			// user clicks 'Previous' button, program will show the previous element in the list related to 'listPointer'
-			case "Previous":
-				displayItem(reList.findKth(--listPointer));
-				checkPointer();
-				writeLog(String.format("Previous item displayed", listPointer + 1, reList.size()));
+			// user clicks 'Previous' button, program will show the previous element in the list related to 'list_cursor'
+			case "PREVIOUS":
+				displayItem(CORE_LIST.previous(list_cursor--));
+				//displayItem(CORE_LIST.findKth(--list_cursor));
+				checkCursor();
+				writeLog("Previous item displayed");
 				break;
-			// user clicks 'Next' button, program will show the next element in the list related to 'listPointer'
-			case "Next":
-				displayItem(reList.findKth(++listPointer));
-				checkPointer();
-				writeLog(String.format("Next item displayed", listPointer + 1, reList.size()));
+			// user clicks 'Next' button, program will show the next element in the list related to 'list_cursor'
+			case "NEXT":
+				displayItem(CORE_LIST.next(list_cursor++));
+				//displayItem(CORE_LIST.findKth(++list_cursor));
+				checkCursor();
+				writeLog("Next item displayed");
 				break;
 			// user clicks 'Save' button, all the elements currently in the list will be saved to a one file
-			case "Save":
+			case "SAVE":
 				try {
-					HouseFile.saveHouseData(reList.printList());
+					HouseFile.saveHouseData(CORE_LIST.printList());
 					writeLog("All data saved");
 				} catch(Exception ex) { JOptionPane.showMessageDialog(this, ex.getMessage());}
 				break;
 			// user clicks 'Load' button, previously written data will be loaded to the program and will put them back to the list as 'ListHouse' objects
-			case "Load":
+			case "LOAD":
 				try {
 					ListHouse[] fData = HouseFile.loadHouseData();
 					for(ListHouse obj : fData) {
-						reList.insert(obj);
+						CORE_LIST.insert(obj);
 					}
-					displayItem(reList.findKth(listPointer = 0));
-					checkPointer();
+					displayItem(CORE_LIST.findKth(list_cursor = 0));
+					checkCursor();
 					writeLog("All data loaded");
 				} catch(Exception ex) { JOptionPane.showMessageDialog(this, ex.getMessage());}
 				break;
 			// user clicks 'Find' button, a window will be displayed for finding list elements
-			case "Find":
-				new RealEstateFind(reList);
+			case "FIND":
+				new RealEstateFind(CORE_LIST);
 				break;
 		}
 	}
