@@ -15,7 +15,7 @@ Group Members
 
 Our project is compatible with opening in 2 most popular Java IDEs
 
-Eclipse Project - http://goo.gl/YfBNEg
+# Eclipse Project - http://goo.gl/YfBNEg
 Backup Links
 
 Mediafire - http://www.mediafire.com/download/s2e5wr8ysyaq9ss/DSA_ec.zip
@@ -26,7 +26,7 @@ Dropbox - https://www.dropbox.com/s/1acfcf5bmkyz7du/DSA_ec.zip?dl=0
 
 2. Extract & Open with Eclipse
 
-Netbeans Project - http://goo.gl/xOu6sv
+# Netbeans Project - http://goo.gl/xOu6sv
 Backup Links
 
 Mediafire - http://www.mediafire.com/download/eow538n4tp7ejjc/DSA_nb.zip
