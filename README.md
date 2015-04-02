@@ -15,13 +15,13 @@ Group Members
 
 Our project is compatible with opening in 2 most popular Java IDEs
 
-Eclipse Project - http://goo.gl/RXCQ4Q
+Eclipse Project - http://www.mediafire.com/download/s2e5wr8ysyaq9ss/DSA_ec.zip
 
 1. Download DSA_ec.zip
 
 2. Extract & Open with Eclipse
 
-Netbeans Project - http://goo.gl/GH0uyx
+Netbeans Project - http://www.mediafire.com/download/eow538n4tp7ejjc/DSA_nb.zip
 
 1. Download DSA_nb.zip
 
