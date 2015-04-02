@@ -16,11 +16,15 @@ Group Members
 Our project is compatible with opening in 2 most popular Java IDEs
 
 Eclipse Project - http://goo.gl/RXCQ4Q
+
 1. Download DSA_ec.zip
+
 2. Extract & Open with Eclipse
 
 Netbeans Project - http://goo.gl/GH0uyx
+
 1. Download DSA_nb.zip
+
 2. Extract & Open with Netbeans
 
 # Using RealEstate.re(included in above projects)
