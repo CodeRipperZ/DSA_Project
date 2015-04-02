@@ -243,6 +243,8 @@ public class RealEstate extends JFrame implements ActionListener {
 		btnNext.setEnabled(!flag);
 		btnPrev.setEnabled(!flag);
 		btnFind.setEnabled(!flag);
+		btnRemove.setEnabled(flag);
+		btnReset.setEnabled(flag);
 		
 		txtLotNo.setEditable(flag);
 		txtFName.setEditable(flag);
