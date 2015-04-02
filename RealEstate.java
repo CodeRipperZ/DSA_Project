@@ -223,7 +223,7 @@ public class RealEstate extends JFrame implements ActionListener {
 	// write messages to the log, so the user know what's going on
 	private void writeLog(String txt) {
 		lblLog.setText(txt);
-		lblItem.setText(String.format("Item %d of %d", reList.size() == 0 ? listPointer : listPointer + 1, reList.size()));
+		lblItem.setText(String.format("Item %d of %d", CORE_LIST.getSize() == 0 ? list_cursor : list_cursor + 1, CORE_LIST.getSize()));
 	}
 	
 	// clears all the textfields when in editmode
@@ -253,7 +253,7 @@ public class RealEstate extends JFrame implements ActionListener {
 		txtLotNo.requestFocus();
 		
 		if(flag == false)
-			checkPointer();
+			checkCursor();
 	}
 	
 	// the big event handling code for all the operations handled by the program
