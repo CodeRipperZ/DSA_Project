@@ -9,34 +9,74 @@ Group Members
 
 ---------------------------------------------------------------------
 
-
 # Real Estate Program ReadMe
 
-Adding a New Real Estate
+# Importing Projects
 
-1. Click 'Add'
-2. Enter your real estate data
-3. Click 'OK'
+Our project is compatible with opening in 2 most popular Java IDEs
 
-NOTE: if you don't want to commit your data to the list, click 'Cancel', program will switch back to default view.
+Eclipse Project - http://goo.gl/RXCQ4Q
+1. Download DSA_ec.zip
+2. Extract & Open with Eclipse
 
-NOTE: Obviously, clicking 'Clear' button will clear all text fields, program will NOT switch back to normal mode, you can still fill your data.
+Netbeans Project - http://goo.gl/GH0uyx
+1. Download DSA_nb.zip
+2. Extract & Open with Netbeans
 
+# Using RealEstate.re(included in above projects)
+1. Run Real Estate Program
+2. Click 'Load'
 
 # .RE FILE FORMAT
 
 file extension - .re
 
 first 4 bytes - number of ListHouse objects saved in the file
+after 4 bytes - line by line data of 'ListHouse' object members
 
-after 8 bytes - line by line data of 'ListHouse' object members
+NOTE > There is an example file in the repository
 
-there is an example file in the repository
+#Adding a New Real Estate
 
-# Using Exapmle RealEstate.re file for testing
+1. Click 'Add'
+2. Enter your real estate data
+3. Click 'OK'
 
-1. Create a project using yout IDE(Netbeans, Exlipse, JCreator etc)
-2. Import source files to the project
-3. Copy RealEstate.re to your project directory
-4. Run Program
-5. Click 'Load'
+NOTE: after you clicked 'OK' program validates your data, so you will be buzzed if there is any inconsistancy.
+
+NOTE: if you don't want to commit your data to the list, click 'Cancel', program will switch back to default view.
+
+NOTE: Obviously, clicking 'Clear' button will clear all text fields, program will NOT switch back to normal mode, you can still fill your data.
+
+# Removing a Record
+
+1. Navigate to the record you want to remove
+2. Click 'Remove'
+
+NOTE: you can remove all the data at once by clicking 'Reset'
+
+# Searching for a Record
+
+1. Click 'Find', a new Window will appear
+2. Enter 'LotNumber'
+3. Click 'Find'
+
+NOTE: if the query is not found, program will prompt you
+
+NOTE: if invalid data is entered, program will prompt you
+
+NOTE: after once query is found, to search another click 'Clear'
+
+NOTE: In this window, you can sort the data in the list in both Ascending & Decenting order by 'LotNumber'
+
+# Saving the List
+
+You can simply save your data by clicking 'Save' button, it will create 'RealEstate.re' in current directory
+
+# Loading Data
+
+It will only take one single mouse click to load from a file, just click 'Load'
+
+# Navigating through the list
+
+You can view data one-by-one by click 'Next'(to view next item in the list) or 'Previous'(to view previous item in the list).
