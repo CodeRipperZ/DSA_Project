@@ -1,11 +1,11 @@
 # CodeRipperZ
 #
 Group Members
-  1. Hashan Chandika
-  2. Jithma Yasiru
-  3. Chethaka Gunawardana
-  4. Sanduni Perera
-  5. Anushika Suhani
+  1. Hashan Chandika as 'HashanCP'            14209614
+  2. Jithma Yasiru as 'Jithma1'               14208832
+  3. Chethaka Gunawardana as 'chethaka'       14208920
+  4. Sanduni Perera as 'wsnperera'            14209000
+  5. Anushika Suhani as 'anushikasuhani'      14208897
 
 ---------------------------------------------------------------------
 
