@@ -34,7 +34,6 @@ Dropbox - https://www.dropbox.com/s/llbg3ktscu4wj8u/DSA_nb.zip?dl=0
 1. Download DSA_nb.zip
 
 2. Extract & Open with Netbeans
-3. 
 
 # JAR File
 
@@ -47,7 +46,7 @@ Mediafire - http://www.mediafire.com/download/0xvon6t863i8xit/DSA_jar.zip
 Dropbox - https://www.dropbox.com/s/l1lcbq4nayaxwip/DSA_jar.zip?dl=0
 
 1. Download DSA_jar.zip
-2. Run 'run.bat'
+2. Extract & Run 'run.bat'
 
 # Using RealEstate.re(included in above projects)
 1. Run Real Estate Program
