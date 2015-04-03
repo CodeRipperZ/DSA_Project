@@ -11,6 +11,21 @@ Group Members
 
 # Real Estate Program ReadMe
 
+# JAR File
+
+Using JAR file, you can run the program quickly without installing any IDE
+
+Requirements : JRE 1.7 or Higher
+
+Mediafire - http://www.mediafire.com/download/0xvon6t863i8xit/DSA_jar.zip
+
+Dropbox - https://www.dropbox.com/s/l1lcbq4nayaxwip/DSA_jar.zip?dl=0
+
+1. Download DSA_jar.zip
+2. Extract & Run 'run.bat'
+
+---------------------------------------------------------------------
+
 # Importing Projects
 
 Our project is compatible with opening in 2 most popular Java IDEs
@@ -35,24 +50,11 @@ Dropbox - https://www.dropbox.com/s/llbg3ktscu4wj8u/DSA_nb.zip?dl=0
 
 2. Extract & Open with Netbeans
 
-# JAR File
-
-Using JAR file, you can run the program quickly without installing any IDE
-
-Requirements : JRE 1.7 or Higher
-
-Mediafire - http://www.mediafire.com/download/0xvon6t863i8xit/DSA_jar.zip
-
-Dropbox - https://www.dropbox.com/s/l1lcbq4nayaxwip/DSA_jar.zip?dl=0
-
-1. Download DSA_jar.zip
-2. Extract & Run 'run.bat'
-
 # Using RealEstate.re(included in above projects)
 1. Run Real Estate Program
 2. Click 'Load'
 
-#
+---------------------------------------------------------------------
 
 # .RE FILE FORMAT
 
@@ -62,6 +64,8 @@ first 4 bytes - number of ListHouse objects saved in the file
 after 4 bytes - line by line data of 'ListHouse' object members
 
 NOTE > There is an example file in the repository
+
+---------------------------------------------------------------------
 
 #Adding a New Real Estate
 
