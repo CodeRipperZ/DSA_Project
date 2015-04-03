@@ -61,6 +61,7 @@ Dropbox - https://www.dropbox.com/s/llbg3ktscu4wj8u/DSA_nb.zip?dl=0
 file extension - .re
 
 first 4 bytes - number of ListHouse objects saved in the file
+
 after 4 bytes - line by line data of 'ListHouse' object members
 
 NOTE > There is an example file in the repository
